@@ -2,12 +2,14 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace dz
+namespace Laboratory-work-No.-8
+    
 {
     public partial class Form1 : Form
     {
         bool dragging = false;
-        Point offset;
+        Point dragCursorPoint;
+        Point dragLabelPoint;
 
         public Form1()
         {
@@ -17,15 +19,16 @@ namespace dz
         private void label1_MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;
-            offset = e.Location;
+            dragCursorPoint = Cursor.Position;
+            dragLabelPoint = label1.Location;
         }
 
         private void label1_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
             {
-                label1.Left = label1.Left + e.X - offset.X;
-                label1.Top = label1.Top + e.Y - offset.Y;
+                Point diff = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                label1.Location = Point.Add(dragLabelPoint, new Size(diff));
             }
         }
 
