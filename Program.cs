@@ -1,7 +1,8 @@
 using System;
 using System.Windows.Forms;
 
-namespace dz
+namespace Laboratory-work-No.-8
+
 {
     static class Program
     {
